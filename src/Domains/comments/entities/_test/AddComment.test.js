@@ -5,6 +5,7 @@ describe('NewComments entities', () => {
     // Arrange
     const payload = {
       content: 'sebuah comment',
+      owner: 'user-123',
     };
 
     // Action & Assert
@@ -16,6 +17,7 @@ describe('NewComments entities', () => {
     const payload = {
       content: 123,
       owner: 123,
+      thread_id: 123,
     };
 
     // Action & Assert
@@ -27,6 +29,7 @@ describe('NewComments entities', () => {
     const payload = {
       content: 'sebuah comment',
       owner: 'user-123',
+      thread_id: 'thread-123',
     };
 
     // Action
@@ -36,5 +39,6 @@ describe('NewComments entities', () => {
     expect(addComment).toBeInstanceOf(AddComment);
     expect(addComment.content).toEqual(payload.content);
     expect(addComment.owner).toEqual(payload.owner);
+    expect(addComment.thread_id).toEqual(payload.thread_id);
   });
 });
