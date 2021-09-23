@@ -8,25 +8,6 @@ const ThreadRepository = require('../../../Domains/threads/ThreadRepository');
 const DeleteCommentUseCase = require('../DeleteCommentUseCase');
 
 describe('AddCommentUseCase', () => {
-  beforeAll(async () => {
-    await UsersTableTestHelper.addUser({});
-    await ThreadsTableTestHelper.addThread({});
-  });
-
-  beforeEach(async () => {
-    await CommentsTableTestHelper.addComment({});
-  });
-
-  afterAll(async () => {
-    await UsersTableTestHelper.cleanTable();
-    await ThreadsTableTestHelper.cleanTable();
-    await pool.end();
-  });
-
-  afterEach(async () => {
-    await CommentsTableTestHelper.cleanTable();
-  });
-
   it('should orchestrating the delete comment action correctly', async () => {
     // Arrange
     const threadId = 'thread-123';
@@ -54,7 +35,7 @@ describe('AddCommentUseCase', () => {
     });
 
     // Action
-    const deleteComment = await deleteCommentUseCase.execute(
+    await deleteCommentUseCase.execute(
       threadId,
       commentId,
       userId,

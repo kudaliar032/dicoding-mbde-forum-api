@@ -8,17 +8,6 @@ const UsersTableTestHelper = require('../../../../tests/UsersTableTestHelper');
 const ThreadRepository = require('../../../Domains/threads/ThreadRepository');
 
 describe('AddCommentUseCase', () => {
-  beforeAll(async () => {
-    await UsersTableTestHelper.addUser({});
-    await ThreadsTableTestHelper.addThread({});
-  });
-
-  afterAll(async () => {
-    await UsersTableTestHelper.cleanTable();
-    await ThreadsTableTestHelper.cleanTable();
-    await pool.end();
-  });
-
   it('should orchestrating the add comment action correctly', async () => {
     // Arrange
     const useCasePayload = {

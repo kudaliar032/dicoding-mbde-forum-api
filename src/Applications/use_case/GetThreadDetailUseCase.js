@@ -15,15 +15,19 @@ class GetThreadDetailUseCase {
     return {
       thread: {
         ...thread,
-        comments: comments.map(({
-          id, username, date, content, is_delete,
-        }) => ({
-          id,
-          username,
-          date,
-          content: is_delete ? '**komentar telah dihapus**' : content,
-        })),
+        comments: comments.map(this._hideDeletedComment),
       },
+    };
+  }
+
+  _hideDeletedComment({
+    id, username, date, content, is_delete,
+  }) {
+    return {
+      id,
+      username,
+      date,
+      content: is_delete ? '**komentar telah dihapus**' : content,
     };
   }
 }
