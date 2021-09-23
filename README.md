@@ -1,3 +1,3 @@
-# mbde-forum-api
+# dicoding-mbde-forum-api
 
 Dicoding - Menjadi Back-End Developer Expert
