@@ -24,9 +24,23 @@ jobs:
         node-version: 14.x
     - name: npm install migrate and test
       run: |
-        mv .env.test .env
         npm install
         npm run migrate up
         npm run test
       env:
         CI: true
+        HOST: localhost
+        PORT: 5000
+        PGHOST: postgres
+        PGUSER: postgres
+        PGDATABASE: forumapi_test
+        PGPASSWORD: strongpassword
+        PGPORT: 5432
+        PGHOST_TEST: postgres
+        PGUSER_TEST: postgres
+        PGDATABASE_TEST: forumapi_test
+        PGPASSWORD_TEST: strongpassword
+        PGPORT_TEST: 5432
+        ACCESS_TOKEN_KEY: strongaccesstokenkey
+        REFRESH_TOKEN_KEY: storngrefreshtokenkey
+        ACCCESS_TOKEN_AGE: 3000
