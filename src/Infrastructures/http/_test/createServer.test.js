@@ -2,6 +2,23 @@ const createServer = require('../createServer');
 const container = require('../../container');
 
 describe('HTTP server', () => {
+  it('should response 200 when request index page', async () => {
+    // Arrange
+    const server = await createServer({});
+
+    // Action
+    const response = await server.inject({
+      method: 'GET',
+      url: '/',
+    });
+
+    // Assert
+    const responseJson = JSON.parse(response.payload);
+    expect(response.statusCode).toEqual(200);
+    expect(responseJson.status).toStrictEqual('success');
+    expect(responseJson.message).toStrictEqual('Dicoding - Menjadi Back-End Developer Expert - Forum API');
+  });
+
   it('should response 404 when request unregistered route', async () => {
     // Arrange
     const server = await createServer({});
